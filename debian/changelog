@@ -1,0 +1,5 @@
+backports-lzma (0.0.3-1) unstable; urgency=low
+
+  * source package automatically created by stdeb 0.6.0+git
+
+ -- Peter Cock, based on work by Nadeem Vawda and Per Oyvind Karlsen <p.j.a.cock@googlemail.com>  Wed, 05 Nov 2014 00:47:26 +0000
