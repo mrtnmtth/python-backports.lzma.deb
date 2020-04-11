@@ -1,3 +1,10 @@
+backports-lzma (0.0.14-1) unstable; urgency=medium
+
+  [ mrtnmtth ]
+  * New upstream version 0.0.14
+
+ -- mttronc <mrtn.mtth@gmx.de>  Sat, 11 Apr 2020 13:08:00 +0200
+
 backports-lzma (0.0.13-1) unstable; urgency=medium
 
   [ gkr ]
