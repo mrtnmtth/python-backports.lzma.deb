@@ -35,17 +35,26 @@ lzmalib = '%slzma'%('lib' if sys.platform == 'win32' else '')
 class build_ext_subclass(build_ext):
     def build_extensions(self):
         xtra_compile_args = []
+        xtra_link_args = []
 
         if self.compiler.compiler_type == "mingw32":
             # https://docs.python.org/3/library/platform.html#cross-platform
             is32bit = sys.maxsize <= 2**32
-            xtra_compile_args = [
+            xtra_compile_args += [
                        "-DMS_WIN32",
                        "-mstackrealign"
                        ] if is32bit else ["-DMS_WIN64"]
+            xtra_link_args += [
+                       "-static-libgcc"
+                       ] if is32bit else []
+        elif self.compiler.compiler_type == "msvc":
+            xtra_link_args += [
+                    "/LTCG:OFF"
+                    ] if sys.version_info >= (3,) else []
 
         for e in self.extensions:
             e.extra_compile_args = xtra_compile_args
+            e.extra_link_args = xtra_link_args
 
         build_ext.build_extensions(self)
 
@@ -99,7 +108,8 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
