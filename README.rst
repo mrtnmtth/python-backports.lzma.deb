@@ -2,17 +2,20 @@
    :alt: Package on Python Package Index (PyPI)
    :target: https://pypi.python.org/pypi/backports.lzma
 .. image:: https://img.shields.io/conda/vn/conda-forge/backports.lzma.svg
-   :alt: Conda package from Anaconda (default) channel
-   :target: https://anaconda.org/anaconda/backports.lzma
-.. image:: https://img.shields.io/conda/vn/anaconda/backports.lzma.svg
    :alt: Conda package from conda-forge channel
    :target: https://anaconda.org/conda-forge/backports.lzma
-.. image:: https://img.shields.io/travis/peterjc/backports.lzma/master.svg
+.. image:: https://img.shields.io/conda/vn/anaconda/backports.lzma.svg
+   :alt: Conda package from Anaconda (default) channel
+   :target: https://anaconda.org/anaconda/backports.lzma
+.. image:: https://img.shields.io/travis/peterjc/backports.lzma/master.svg?label=master&logo=travis
    :alt: Linux testing with TravisCI
    :target: https://travis-ci.org/peterjc/backports.lzma/branches
-.. image:: https://img.shields.io/appveyor/ci/peterjc/backports-lzma/master.svg
+.. image:: https://img.shields.io/appveyor/ci/peterjc/backports-lzma/master.svg?label=master&logo=CircleCI
    :alt: Windows testing with AppVeyor
    :target: https://ci.appveyor.com/project/peterjc/backports-lzma/history
+.. image:: https://img.shields.io/pypi/dm/backports-lzma.svg
+   :alt: PyPI downloads
+   :target: https://pypistats.org/packages/backports-lzma
 
 Introduction
 ============
@@ -138,9 +141,9 @@ library provided lzma if present::
 Please refer to the ``lzma`` documentation online:
 http://docs.python.org/dev/library/lzma.html
 
-Note that while ``lzma`` should be available on Python 3.3, you can still
-install the backport. This is useful for two reasons, first testing the two
-act the same way, and second it is possible that your Python installation
+Note that while ``lzma`` should be available on Python 3.3 onwards, you can
+still install the backport. This is useful for two reasons, first testing the
+two act the same way, and second it is possible that your Python installation
 lacks the standard library ``lzma``. This can happen if Python was installed
 from source and XZ Utils was not available. If this was a systems level Python
 install, as a user you could still install XZ Utils and this backport under
@@ -194,8 +197,11 @@ Revisions
    * Fixes locale issue in ``setup.py`` under Python 3 (see #33 reported by
      Ben Hearsum).
 * v0.0.13 - 11 July 2018
-   * Use setuptools instead of distutils if available, useful for compiling
-     your own wheel or egg files (see #34 from @wiggin15).
+   * Use ``setuptools`` instead of ``distutils`` if available, useful for
+     compiling your own wheel or egg files (see #34 from @wiggin15).
+* v0.0.14 - 12 September 2019
+   * Back ported fix decompressing files using ``FORMAT_ALONE`` without
+     end markers (see #40 from Ma Kin and Python issue 21872).
 
 
 Contributors
@@ -207,7 +213,8 @@ work, it was backported to also run on Python 2.6, 2.7 and 3.0, 3.1 and 3.2 by
 Peter Cock.
 
 Later contributors include: Tomer Chachamu, Wynn Wilkes, Irving Reid,
-Ralph Bean, Deroko, John Kirkham, Nehal J Wani, Michał Górny, Toshio Kuratomi.
+Ralph Bean, Deroko, John Kirkham, Nehal J Wani, Michał Górny, Toshio Kuratomi,
+Ma Lin.
 
 
 Bug Reports
